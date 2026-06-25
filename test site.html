@@ -1,0 +1,1103 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Mongo is a California-based digital marketing agency. We enable brands to leverage their data and connect with their ideal audience online.">
+  <meta name="theme-color" content="#090909">
+  <title>Mongo | Time to Shine Online</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Cormorant+Garamond:ital,wght@1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    /* ===== RESET ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ===== VARIABLES ===== */
+    :root {
+      --bg: #090909;
+      --bg-2: #111111;
+      --bg-3: #161616;
+      --text: #F0EDE4;
+      --text-muted: #6B6B65;
+      --text-dim: #9A9990;
+      --accent: #C8FF47;
+      --accent-dim: rgba(200, 255, 71, 0.1);
+      --border: rgba(240, 237, 228, 0.08);
+      --border-light: rgba(240, 237, 228, 0.14);
+      --font-display: 'Syne', sans-serif;
+      --font-serif: 'Cormorant Garamond', serif;
+      --font-body: 'Inter', sans-serif;
+      --max-w: 1160px;
+      --px: clamp(1.25rem, 5vw, 4rem);
+      --py: clamp(5rem, 10vw, 8rem);
+    }
+
+    /* ===== TYPOGRAPHY ===== */
+    h1, h2, h3 { font-family: var(--font-display); font-weight: 800; line-height: 1.02; letter-spacing: -0.04em; }
+    .serif { font-family: var(--font-serif); font-style: italic; font-weight: 500; letter-spacing: -0.01em; line-height: 1.05; }
+    p { color: var(--text-dim); line-height: 1.78; }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+    /* ===== LAYOUT ===== */
+    .wrap { width: 100%; max-width: var(--max-w); margin: 0 auto; padding: 0 var(--px); }
+    section { padding: var(--py) 0; }
+
+    /* ===== BUTTONS ===== */
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.9rem 1.875rem;
+      font-family: var(--font-display); font-size: 0.78rem; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      border: 1px solid transparent;
+      transition: all 0.25s ease; white-space: nowrap;
+    }
+    .btn-primary { background: var(--accent); color: #080808; border-color: var(--accent); }
+    .btn-primary:hover { background: #d6ff66; transform: translateY(-2px); box-shadow: 0 8px 32px rgba(200,255,71,0.22); }
+    .btn-ghost { background: transparent; color: var(--text); border-color: var(--border-light); }
+    .btn-ghost:hover { border-color: var(--text); transform: translateY(-2px); }
+
+    /* ===== LABEL ===== */
+    .label {
+      display: flex; align-items: center; gap: 0.75rem;
+      font-family: var(--font-display); font-size: 0.65rem; font-weight: 700;
+      letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-muted);
+      margin-bottom: 1.75rem;
+    }
+    .label::before { content: ''; width: 20px; height: 1px; background: var(--accent); flex-shrink: 0; }
+
+    /* ===== NAV ===== */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 900;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.25rem var(--px);
+      border-bottom: 1px solid transparent;
+      transition: background 0.35s ease, border-color 0.35s ease, backdrop-filter 0.35s ease;
+    }
+    .nav.stuck {
+      background: rgba(9,9,9,0.88);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border-color: var(--border);
+    }
+    .logo {
+      font-family: var(--font-display); font-weight: 800; font-size: 1.2rem;
+      letter-spacing: -0.02em; text-transform: uppercase; color: var(--text);
+      z-index: 901;
+    }
+    .logo span { color: var(--accent); }
+    .nav-links { display: flex; align-items: center; gap: 2.25rem; list-style: none; }
+    .nav-links a {
+      font-family: var(--font-display); font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-right { display: flex; align-items: center; gap: 1.25rem; }
+
+    /* Hamburger */
+    .ham {
+      display: none; flex-direction: column; gap: 5px;
+      padding: 0.375rem; z-index: 901;
+    }
+    .ham span {
+      display: block; width: 22px; height: 1.5px; background: var(--text);
+      transition: all 0.38s cubic-bezier(0.76,0,0.24,1); transform-origin: center;
+    }
+    .ham.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .ham.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .ham.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    /* Mobile nav overlay */
+    .mob-nav {
+      position: fixed; inset: 0; z-index: 899;
+      background: var(--bg);
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 6rem var(--px) 3rem;
+      transform: translateX(100%);
+      transition: transform 0.5s cubic-bezier(0.76,0,0.24,1);
+      overflow-y: auto;
+    }
+    .mob-nav.open { transform: translateX(0); }
+    .mob-nav ul { list-style: none; margin-bottom: 3rem; }
+    .mob-nav ul li { border-bottom: 1px solid var(--border); overflow: hidden; }
+    .mob-nav ul li a {
+      display: block; padding: 1.1rem 0;
+      font-family: var(--font-display); font-size: clamp(1.75rem, 9vw, 2.75rem);
+      font-weight: 800; letter-spacing: -0.04em; color: var(--text);
+      transform: translateY(110%);
+      transition: transform 0.5s cubic-bezier(0.76,0,0.24,1), color 0.2s;
+    }
+    .mob-nav.open ul li a { transform: translateY(0); }
+    .mob-nav ul li:nth-child(1) a { transition-delay: 0.06s; }
+    .mob-nav ul li:nth-child(2) a { transition-delay: 0.12s; }
+    .mob-nav ul li:nth-child(3) a { transition-delay: 0.18s; }
+    .mob-nav ul li:nth-child(4) a { transition-delay: 0.24s; }
+    .mob-nav ul li:nth-child(5) a { transition-delay: 0.30s; }
+    .mob-nav ul li:nth-child(6) a { transition-delay: 0.36s; }
+    .mob-nav ul li a:hover { color: var(--accent); }
+    .mob-footer { display: flex; flex-direction: column; gap: 1rem; }
+    .mob-contact { font-size: 0.8rem; color: var(--text-muted); line-height: 2; }
+
+    /* ===== HERO ===== */
+    #top {
+      min-height: 100svh; display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 0 var(--px); padding-top: 7rem; padding-bottom: clamp(3rem,6vw,5rem);
+      position: relative; overflow: hidden;
+    }
+    .hero-glow {
+      position: absolute; top: 0; right: -10%; width: 70%; height: 100%;
+      background: radial-gradient(ellipse at 60% 40%, rgba(200,255,71,0.05) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .hero-grid {
+      position: absolute; inset: 0; pointer-events: none;
+      background-image: linear-gradient(rgba(240,237,228,0.025) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(240,237,228,0.025) 1px, transparent 1px);
+      background-size: 72px 72px;
+    }
+    .hero-inner { position: relative; z-index: 1; }
+    .hero-loc {
+      display: flex; align-items: center; gap: 0.625rem; margin-bottom: 1.75rem;
+      font-family: var(--font-display); font-size: 0.65rem; font-weight: 700;
+      letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-muted);
+    }
+    .hero-loc-dot {
+      width: 7px; height: 7px; border-radius: 50%; background: var(--accent);
+      animation: blink 2.4s ease-in-out infinite;
+    }
+    @keyframes blink { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(1.6)} }
+    .hero-h1 {
+      font-size: clamp(3rem, 8.5vw, 8rem); line-height: 0.94;
+      font-weight: 800; letter-spacing: -0.05em;
+      color: var(--text); margin-bottom: 2rem;
+    }
+    .hero-h1 em { font-family: var(--font-serif); font-style: italic; color: var(--accent); letter-spacing: -0.02em; }
+    .hero-sub {
+      font-size: clamp(0.9rem, 1.8vw, 1.05rem); color: var(--text-dim);
+      max-width: 460px; line-height: 1.8; margin-bottom: 2.5rem;
+    }
+    .hero-btns { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 3.5rem; }
+    .hero-stats {
+      display: flex; flex-wrap: wrap; gap: 2.5rem;
+      padding-top: 2.5rem; border-top: 1px solid var(--border);
+    }
+    .stat-val {
+      font-family: var(--font-display); font-size: clamp(1.75rem, 4vw, 2.75rem);
+      font-weight: 800; letter-spacing: -0.05em; line-height: 1; color: var(--accent);
+    }
+    .stat-lbl {
+      font-size: 0.72rem; color: var(--text-muted); margin-top: 0.3rem;
+      letter-spacing: 0.04em;
+    }
+
+    /* ===== TICKER ===== */
+    .ticker {
+      overflow: hidden;
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      padding: 0.9rem 0; background: var(--bg-2);
+    }
+    .ticker-track {
+      display: flex; width: max-content;
+      animation: marquee 28s linear infinite;
+      will-change: transform;
+    }
+    .ticker-track:hover { animation-play-state: paused; }
+    .t-item { display: flex; align-items: center; gap: 2rem; padding: 0 1.75rem; }
+    .t-name {
+      font-family: var(--font-display); font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted);
+      white-space: nowrap;
+    }
+    .t-dot { width: 3px; height: 3px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+    @keyframes marquee { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+
+    /* ===== TESTIMONIALS ===== */
+    .feat-quote {
+      background: var(--accent-dim); border: 1px solid rgba(200,255,71,0.14);
+      padding: clamp(2rem,4vw,3rem); margin-bottom: 1.5px; position: relative; overflow: hidden;
+    }
+    .feat-quote::before {
+      content: '\201C'; position: absolute; top: 0.75rem; left: 2rem;
+      font-family: var(--font-serif); font-size: 7rem; line-height: 1;
+      color: var(--accent); opacity: 0.2; pointer-events: none; user-select: none;
+    }
+    .q-text {
+      font-family: var(--font-serif); font-style: italic; font-size: clamp(1rem,2.2vw,1.3rem);
+      color: var(--text); line-height: 1.65; padding-top: 1.25rem; margin-bottom: 1.75rem;
+    }
+    .q-author { display: flex; align-items: center; gap: 0.875rem; }
+    .q-avatar {
+      width: 38px; height: 38px; border-radius: 50%; background: var(--accent);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display); font-size: 0.65rem; font-weight: 800;
+      color: #080808; flex-shrink: 0;
+    }
+    .q-name { font-family: var(--font-display); font-size: 0.78rem; font-weight: 700; color: var(--text); }
+    .q-role { font-size: 0.72rem; color: var(--text-muted); margin-top: 0.1rem; }
+
+    .card-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5px; background: var(--border);
+      border: 1.5px solid var(--border);
+    }
+    .card {
+      background: var(--bg); padding: 2.25rem 2rem;
+      transition: background 0.3s ease;
+    }
+    .card:hover { background: var(--bg-2); }
+    .card .q-text { font-size: 0.95rem; padding-top: 0; margin-bottom: 1.5rem; }
+
+    /* ===== WHY ===== */
+    .why-top {
+      display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem,5vw,5rem);
+      align-items: end; margin-bottom: 3rem;
+    }
+    .why-h2 { font-size: clamp(2.5rem, 5.5vw, 4.5rem); }
+    .why-p { font-size: 0.95rem; color: var(--text-dim); line-height: 1.8; max-width: 400px; }
+    .feat-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1.5px; background: var(--border); border: 1.5px solid var(--border);
+    }
+    .feat-cell {
+      background: var(--bg-2); padding: 2.5rem; transition: background 0.3s;
+    }
+    .feat-cell:hover { background: var(--bg-3); }
+    .feat-num {
+      font-family: var(--font-display); font-size: 0.6rem; font-weight: 700;
+      letter-spacing: 0.2em; color: var(--accent); margin-bottom: 1rem;
+    }
+    .feat-title { font-family: var(--font-display); font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: 0.6rem; letter-spacing: -0.02em; }
+    .feat-desc { font-size: 0.84rem; color: var(--text-muted); line-height: 1.72; }
+
+    /* ===== PROCESS ===== */
+    .steps { margin-top: 3rem; }
+    .step {
+      border-top: 1px solid var(--border);
+      display: grid; grid-template-columns: 64px 1fr 24px; gap: 1.5rem;
+      padding: 2rem 0; cursor: pointer; transition: padding 0.3s;
+    }
+    .step:last-child { border-bottom: 1px solid var(--border); }
+    .step-num {
+      font-family: var(--font-display); font-size: 0.6rem; font-weight: 700;
+      letter-spacing: 0.18em; color: var(--accent); padding-top: 0.2rem;
+    }
+    .step-title {
+      font-family: var(--font-display); font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+      font-weight: 800; letter-spacing: -0.03em; color: var(--text);
+      transition: color 0.2s;
+    }
+    .step:hover .step-title { color: var(--accent); }
+    .step-body {
+      max-height: 0; overflow: hidden;
+      font-size: 0.875rem; color: var(--text-dim); line-height: 1.8;
+      transition: max-height 0.42s ease, margin-top 0.3s ease;
+      grid-column: 2; max-width: 560px;
+    }
+    .step.open .step-body { max-height: 200px; margin-top: 0.875rem; }
+    .step-icon {
+      font-size: 1rem; color: var(--text-muted); padding-top: 0.2rem; text-align: right;
+      transition: transform 0.35s ease, color 0.2s;
+    }
+    .step.open .step-icon { transform: rotate(45deg); color: var(--accent); }
+
+    /* ===== SERVICES ===== */
+    .svc-list { margin-top: 3rem; }
+    .svc-item { border-top: 1px solid var(--border); overflow: hidden; }
+    .svc-item:last-child { border-bottom: 1px solid var(--border); }
+    .svc-hdr {
+      padding: 1.875rem 0; display: flex; align-items: center;
+      justify-content: space-between; gap: 1.5rem; cursor: pointer;
+    }
+    .svc-title {
+      font-family: var(--font-display); font-size: clamp(1.1rem,2.5vw,1.6rem);
+      font-weight: 800; letter-spacing: -0.03em; color: var(--text); transition: color 0.2s;
+    }
+    .svc-hdr:hover .svc-title { color: var(--accent); }
+    .svc-tog {
+      width: 30px; height: 30px; border-radius: 50%;
+      border: 1px solid var(--border-light);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.7rem; color: var(--text-muted); flex-shrink: 0;
+      transition: all 0.3s ease;
+    }
+    .svc-item.open .svc-tog { background: var(--accent); border-color: var(--accent); color: #080808; transform: rotate(45deg); }
+    .svc-body { max-height: 0; overflow: hidden; transition: max-height 0.42s ease; }
+    .svc-item.open .svc-body { max-height: 500px; }
+    .svc-inner {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; padding-bottom: 2rem;
+    }
+    .svc-desc { font-size: 0.875rem; color: var(--text-dim); line-height: 1.82; }
+    .svc-bullets { list-style: none; }
+    .svc-bullets li {
+      font-size: 0.82rem; color: var(--text-muted); padding: 0.4rem 0;
+      border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 0.6rem;
+    }
+    .svc-bullets li::before { content:''; width:4px; height:4px; border-radius:50%; background:var(--accent); flex-shrink:0; }
+
+    /* ===== PLATFORMS ===== */
+    .plat-filters { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2.5rem; }
+    .flt {
+      padding: 0.45rem 1.125rem;
+      font-family: var(--font-display); font-size: 0.65rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      background: transparent; border: 1px solid var(--border-light); color: var(--text-muted);
+      transition: all 0.22s;
+    }
+    .flt:hover { border-color: var(--text-muted); color: var(--text); }
+    .flt.on { background: var(--accent); border-color: var(--accent); color: #080808; }
+    .plat-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(138px, 1fr));
+      gap: 1.5px; background: var(--border); border: 1.5px solid var(--border);
+    }
+    .plat {
+      background: var(--bg); padding: 1.125rem 1.375rem;
+      font-family: var(--font-display); font-size: 0.76rem; font-weight: 700;
+      letter-spacing: 0.02em; color: var(--text-muted);
+      transition: all 0.22s; user-select: none;
+    }
+    .plat:hover { background: var(--bg-2); color: var(--text); }
+    .plat.hide { display: none; }
+
+    /* ===== STORY ===== */
+    .story-wrap {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: clamp(2.5rem,6vw,6rem); align-items: center;
+    }
+    .story-img-wrap { position: relative; }
+    .story-img {
+      width: 100%; aspect-ratio: 3/4; object-fit: cover;
+      filter: grayscale(15%) contrast(1.05);
+    }
+    .story-frame {
+      position: absolute; inset: -10px; border: 1px solid var(--accent);
+      opacity: 0.2; pointer-events: none; z-index: -1;
+    }
+    .story-h2 { font-size: clamp(2rem, 4vw, 3.25rem); margin-bottom: 1.5rem; }
+    .story-p { font-size: 0.875rem; color: var(--text-dim); line-height: 1.85; margin-bottom: 0.875rem; }
+    .story-sig { font-family: var(--font-serif); font-style: italic; font-size: 0.875rem; color: var(--text-muted); margin-top: 1.375rem; margin-bottom: 2rem; }
+    .story-btns { display: flex; gap: 0.875rem; flex-wrap: wrap; }
+
+    /* ===== FAQ ===== */
+    .faq-list { margin-top: 3rem; max-width: 840px; }
+    .faq-item { border-top: 1px solid var(--border); }
+    .faq-item:last-child { border-bottom: 1px solid var(--border); }
+    .faq-q {
+      width: 100%; text-align: left;
+      display: flex; align-items: center; justify-content: space-between; gap: 1.5rem;
+      padding: 1.625rem 0;
+      font-family: var(--font-display); font-size: clamp(0.9rem,2vw,1.05rem);
+      font-weight: 700; letter-spacing: -0.02em; color: var(--text);
+      transition: color 0.2s;
+    }
+    .faq-q:hover { color: var(--accent); }
+    .faq-ico {
+      width: 26px; height: 26px; border-radius: 50%; border: 1px solid var(--border-light);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.7rem; color: var(--text-muted); flex-shrink: 0;
+      transition: all 0.3s;
+    }
+    .faq-item.open .faq-ico { background: var(--accent); border-color: var(--accent); color: #080808; transform: rotate(45deg); }
+    .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+    .faq-item.open .faq-a { max-height: 300px; }
+    .faq-a-inner { font-size: 0.875rem; color: var(--text-dim); line-height: 1.85; padding-bottom: 1.625rem; }
+
+    /* ===== CTA ===== */
+    #contact {
+      text-align: center; position: relative; overflow: hidden;
+    }
+    #contact::before {
+      content: ''; position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
+      width: 700px; height: 700px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(200,255,71,0.055) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .cta-h2 {
+      font-size: clamp(2.75rem, 7vw, 5.5rem);
+      max-width: 720px; margin: 0 auto 1.5rem;
+    }
+    .cta-p { font-size: 1rem; color: var(--text-dim); max-width: 460px; margin: 0 auto 2.5rem; line-height: 1.8; }
+    .cta-meta {
+      display: flex; justify-content: center; flex-wrap: wrap; gap: 0.5rem 2rem;
+      margin-top: 2.5rem;
+      font-family: var(--font-display); font-size: 0.72rem; font-weight: 600;
+      letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted);
+    }
+    .cta-meta a { transition: color 0.2s; }
+    .cta-meta a:hover { color: var(--text); }
+
+    /* ===== FOOTER ===== */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: clamp(3rem,6vw,5rem) var(--px) 2.5rem;
+    }
+    .foot-top {
+      display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 3rem;
+      padding-bottom: 3rem; border-bottom: 1px solid var(--border); margin-bottom: 2rem;
+    }
+    .foot-brand-desc { font-size: 0.8rem; color: var(--text-muted); line-height: 1.75; max-width: 250px; margin-top: 1rem; }
+    .foot-col-hd {
+      font-family: var(--font-display); font-size: 0.6rem; font-weight: 700;
+      letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 1.125rem;
+    }
+    .foot-links { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+    .foot-links a { font-size: 0.82rem; color: var(--text-dim); transition: color 0.2s; }
+    .foot-links a:hover { color: var(--text); }
+    .foot-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem; }
+    .foot-copy { font-size: 0.72rem; color: var(--text-muted); }
+    .foot-made { font-family: var(--font-serif); font-style: italic; font-size: 0.8rem; color: var(--text-muted); }
+
+    /* ===== SCROLL ANIMATIONS ===== */
+    .anim { opacity: 0; transform: translateY(28px); transition: opacity 0.72s ease, transform 0.72s ease; }
+    .anim.in { opacity: 1; transform: translateY(0); }
+    .d1 { transition-delay: 0.1s; }
+    .d2 { transition-delay: 0.2s; }
+    .d3 { transition-delay: 0.3s; }
+    .d4 { transition-delay: 0.4s; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      .foot-top { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+      .why-top { grid-template-columns: 1fr; gap: 1.5rem; }
+      .story-wrap { grid-template-columns: 1fr; }
+      .story-img-wrap { max-width: 380px; }
+    }
+    @media (max-width: 768px) {
+      :root { --py: clamp(3.5rem,8vw,5rem); }
+      .nav-links, .nav-right { display: none; }
+      .ham { display: flex; }
+      .feat-grid { grid-template-columns: 1fr; }
+      .card-grid { grid-template-columns: 1fr; }
+      .svc-inner { grid-template-columns: 1fr; }
+      .step { grid-template-columns: 48px 1fr 20px; }
+    }
+    @media (max-width: 540px) {
+      :root { --px: 1.25rem; }
+      .hero-btns { flex-direction: column; }
+      .hero-btns .btn { width: 100%; justify-content: center; }
+      .hero-stats { gap: 1.5rem; }
+      .foot-top { grid-template-columns: 1fr 1fr; gap: 2rem; }
+      .story-wrap { grid-template-columns: 1fr; }
+      .cta-meta { flex-direction: column; align-items: center; gap: 0.75rem; }
+    }
+    @media (max-width: 360px) {
+      .foot-top { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <a href="#top" class="logo">MONGO<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#story">Story</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#platforms">Platforms</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="#contact" class="btn btn-primary">Free Consultation</a>
+  </div>
+  <button class="ham" id="ham" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE NAV -->
+<div class="mob-nav" id="mob">
+  <ul>
+    <li><a href="#top"      class="m-lnk">Home</a></li>
+    <li><a href="#story"    class="m-lnk">Our Story</a></li>
+    <li><a href="#services" class="m-lnk">Services</a></li>
+    <li><a href="#platforms" class="m-lnk">Platforms</a></li>
+    <li><a href="#faq"      class="m-lnk">FAQ</a></li>
+    <li><a href="#contact"  class="m-lnk">Consultation</a></li>
+  </ul>
+  <div class="mob-footer">
+    <a href="https://mongo.digital/lets-talk" class="btn btn-primary">Schedule a Call</a>
+    <div class="mob-contact">
+      (518) 705-8581<br>hello@mongo.digital<br>Los Angeles, CA
+    </div>
+  </div>
+</div>
+
+<!-- HERO -->
+<section id="top">
+  <div class="hero-glow"></div>
+  <div class="hero-grid"></div>
+  <div class="wrap hero-inner">
+    <div class="hero-loc">
+      <div class="hero-loc-dot"></div>
+      Los Angeles, CA &nbsp;·&nbsp; Digital Marketing
+    </div>
+    <h1 class="hero-h1">
+      Enable your<br>
+      brand to<br>
+      <em>shine online.</em>
+    </h1>
+    <p class="hero-sub">Mongo is a California-based digital marketing agency. We enable brands to leverage their data and connect with their ideal audience online.</p>
+    <div class="hero-btns">
+      <a href="https://mongo.digital/lets-talk" class="btn btn-primary">Book Your Free Consultation</a>
+      <a href="#process" class="btn btn-ghost">See How It Works →</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-val"><span class="ctr" data-to="90">0</span>%+</div>
+        <div class="stat-lbl">Repeat client rate</div>
+      </div>
+      <div>
+        <div class="stat-val">$M+</div>
+        <div class="stat-lbl">Ad spend managed</div>
+      </div>
+      <div>
+        <div class="stat-val">Free</div>
+        <div class="stat-lbl">First consultation</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track">
+    <div class="t-item"><span class="t-name">Google Ads</span><span class="t-dot"></span></div>
+    <div class="t-item"><span class="t-name">Meta Ads</span><span class="t-dot"></span></div>
+    <div class="t-item"><span class="t-name">TikTok</span><span class="t-dot"></span></div>
+    <div class="t-item"><span class="t-name">Analytics</span><span class="t-dot"></span></div>
+    <div class="t-item"><span class="t-name">LinkedIn</span><span class="t-dot"></span></div>
+    <div class="t-item"><span class="t-name">YouTube</span><span class="t-dot"></span></div>
+    <div class="t-item"><span class="t-name">Amazon Ads</span><span class="t-dot"></span></div>
+    <div class="t-item"><span class="t-name">Shopify</span><span class="t-dot"></span></div>
+    <div class="t-item"><span class="t-name">Pinterest</span><span class="t-dot"></span></div>
+    <div class="t-item"><span class="t-name">Snapchat</span><span class="t-dot"></span></div>
+    <div class="t-item"><span class="t-name">Bing Ads</span><span class="t-dot"></span></div>
+    <!-- duplicate for seamless loop -->
+    <div class="t-item"><span class="t-name">Google Ads</span><span class="t-dot"></span></div>
+    <div class="t-item"><span class="t-name">Meta Ads</span><span class="t-dot"></span></div>
+    <div class="t-item"><span class="t-name">TikTok</span><span class="t-dot"></span></div>
+    <div class="t-item"><span class="t-name">Analytics</span><span class="t-dot"></span></div>
+    <div class="t-item"><span class="t-name">LinkedIn</span><span class="t-dot"></span></div>
+    <div class="t-item"><span class="t-name">YouTube</span><span class="t-dot"></span></div>
+    <div class="t-item"><span class="t-name">Amazon Ads</span><span class="t-dot"></span></div>
+    <div class="t-item"><span class="t-name">Shopify</span><span class="t-dot"></span></div>
+    <div class="t-item"><span class="t-name">Pinterest</span><span class="t-dot"></span></div>
+    <div class="t-item"><span class="t-name">Snapchat</span><span class="t-dot"></span></div>
+    <div class="t-item"><span class="t-name">Bing Ads</span><span class="t-dot"></span></div>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<section id="clients">
+  <div class="wrap">
+    <div class="label anim">Client Success</div>
+    <h2 class="anim d1" style="font-size:clamp(2.25rem,5vw,4rem);max-width:680px;margin-bottom:3rem;">
+      Helping brands succeed is the reason <em class="serif">we exist.</em>
+    </h2>
+
+    <div class="feat-quote anim">
+      <p class="q-text">"One of a kind service. We've had an amazing experience with Mongo. Nate is one of those rare people: experienced, buttoned up, and can make difficult concepts easily comprehensible to mere mortals. Looking forward to a long working relationship with Mongo."</p>
+      <div class="q-author">
+        <div class="q-avatar">SM</div>
+        <div>
+          <div class="q-name">Sean McAllen</div>
+          <div class="q-role">Partner, Destro</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-grid">
+      <div class="card anim">
+        <p class="q-text">"You can't beat Nate's enthusiasm and passion for helping you understand what's possible for your business. So much fun to work with."</p>
+        <div class="q-author">
+          <div class="q-avatar">CR</div>
+          <div><div class="q-name">Christie Roth</div><div class="q-role">Marketing Director, Saratoga Sports Massage</div></div>
+        </div>
+      </div>
+      <div class="card anim d1">
+        <p class="q-text">"Nate is professional, patient, and super knowledgeable. We thoroughly enjoyed working with him and plan to again in the future."</p>
+        <div class="q-author">
+          <div class="q-avatar">RR</div>
+          <div><div class="q-name">Ruben Ruckman</div><div class="q-role">Designer, RAD Furniture</div></div>
+        </div>
+      </div>
+      <div class="card anim d2">
+        <p class="q-text">"Nate and the Mongo team played an integral part in setting up multiple campaigns for success — over-delivering on key KPIs through backend tracking and audience segmentation."</p>
+        <div class="q-author">
+          <div class="q-avatar">JO</div>
+          <div><div class="q-name">John Osborne</div><div class="q-role">Director of Accounts & Media, Something Massive</div></div>
+        </div>
+      </div>
+      <div class="card anim d3">
+        <p class="q-text">"I can count on Mongo to be the internet experts, which allows me to focus on being the coffee expert."</p>
+        <div class="q-author">
+          <div class="q-avatar">DC</div>
+          <div><div class="q-name">David Cianci</div><div class="q-role">Union Coffee</div></div>
+        </div>
+      </div>
+      <div class="card anim d1">
+        <p class="q-text">"Nate is very knowledgeable and was extremely accommodating to my requests. I appreciate his patience and responsiveness."</p>
+        <div class="q-author">
+          <div class="q-avatar">PL</div>
+          <div><div class="q-name">Patty Lin</div><div class="q-role">Creator, Fishbowl Studios</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:3rem;text-align:center;" class="anim">
+      <a href="#contact" class="btn btn-primary">Become a Success Story</a>
+    </div>
+  </div>
+</section>
+
+<!-- WHY MONGO -->
+<section id="why" style="background:var(--bg-2);">
+  <div class="wrap">
+    <div class="why-top anim">
+      <div>
+        <div class="label">Why Mongo</div>
+        <h2 class="why-h2">Data-driven.<br><em class="serif">Human-first.</em></h2>
+      </div>
+      <p class="why-p">Mongo learns how you interact with your customers online and creates your Digital Road Map. We capture relevant data from your online properties and break it into easily digestible insights for you and your team.</p>
+    </div>
+    <div class="feat-grid">
+      <div class="feat-cell anim">
+        <div class="feat-num">01</div>
+        <div class="feat-title">Fixed-Price Quotes</div>
+        <p class="feat-desc">No runaway budgets. What you see in your quote is exactly what you pay — always.</p>
+      </div>
+      <div class="feat-cell anim d1">
+        <div class="feat-num">02</div>
+        <div class="feat-title">You Own Everything</div>
+        <p class="feat-desc">Your accounts, your data — forever. We ensure you retain full ownership of your digital properties.</p>
+      </div>
+      <div class="feat-cell anim d2">
+        <div class="feat-num">03</div>
+        <div class="feat-title">Obsessive Analytics</div>
+        <p class="feat-desc">We set up tracking that captures exactly what users do on your site and platforms — no guesswork.</p>
+      </div>
+      <div class="feat-cell anim d3">
+        <div class="feat-num">04</div>
+        <div class="feat-title">Coaching Included</div>
+        <p class="feat-desc">We break down the technical details so you can confidently make your own decisions going forward.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="wrap">
+    <div class="label anim">Project Flow</div>
+    <h2 class="anim d1" style="font-size:clamp(2.25rem,5vw,4rem);max-width:640px;">
+      What to expect when <em class="serif">working with Mongo.</em>
+    </h2>
+    <div class="steps">
+      <div class="step anim" data-step>
+        <div class="step-num">01</div>
+        <div>
+          <div class="step-title">Initial No-Cost Consultation</div>
+          <div class="step-body">15–30 minutes. We walk through your business's history with digital platforms, talk goals, and discuss where you're at right now. You leave with helpful advice you can use today — without paying a dime.</div>
+        </div>
+        <div class="step-icon">+</div>
+      </div>
+      <div class="step anim d1" data-step>
+        <div class="step-num">02</div>
+        <div>
+          <div class="step-title">In-Depth Consultation</div>
+          <div class="step-body">Ready to work together? We provide a fixed-cost quote that includes a complete review of your site, the consultation itself, and the creation of your Digital Road Map — your guide to success online.</div>
+        </div>
+        <div class="step-icon">+</div>
+      </div>
+      <div class="step anim d2" data-step>
+        <div class="step-num">03</div>
+        <div>
+          <div class="step-title">Your Digital Road Map</div>
+          <div class="step-body">A plan detailing technical implementation requirements, ideal platforms, and the insights that will be unlocked. Every project has unique goals — you'll have a quote to the cent and know exactly how Mongo will approach it.</div>
+        </div>
+        <div class="step-icon">+</div>
+      </div>
+    </div>
+    <div style="margin-top:2.5rem;" class="anim">
+      <a href="https://mongo.digital/lets-talk" class="btn btn-ghost">Start with a Free Call →</a>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" style="background:var(--bg-2);">
+  <div class="wrap">
+    <div class="label anim">Services</div>
+    <h2 class="anim d1" style="font-size:clamp(2.25rem,5vw,4rem);max-width:640px;">
+      Working with Mongo, <em class="serif">step by step.</em>
+    </h2>
+    <div class="svc-list">
+      <div class="svc-item anim" data-svc>
+        <div class="svc-hdr">
+          <div class="svc-title">Developing a Strategy</div>
+          <div class="svc-tog">+</div>
+        </div>
+        <div class="svc-body">
+          <div class="svc-inner">
+            <p class="svc-desc">No one-size-fits-all approach here. Mongo designs a strategy that fits your vision and connects you with your ideal audience online — across the right channels, at the right time.</p>
+            <ul class="svc-bullets">
+              <li>Define your advertising goals</li>
+              <li>Map how customers interact with your brand online</li>
+              <li>Build your ideal customer profile</li>
+              <li>Evaluate platforms, costs, and targeting options</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="svc-item anim d1" data-svc>
+        <div class="svc-hdr">
+          <div class="svc-title">Analytics Implementation</div>
+          <div class="svc-tog">+</div>
+        </div>
+        <div class="svc-body">
+          <div class="svc-inner">
+            <p class="svc-desc">Once goals are established, we ensure every relevant action is being captured. A one-time setup that creates the data baseline your entire strategy will be built on.</p>
+            <ul class="svc-bullets">
+              <li>Gauge marketing effectiveness and traffic quality</li>
+              <li>Optimize web design and user flow</li>
+              <li>Remove the guesswork — answer the 5 Ws of user data</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="svc-item anim d2" data-svc>
+        <div class="svc-hdr">
+          <div class="svc-title">Campaign Build Out</div>
+          <div class="svc-tog">+</div>
+        </div>
+        <div class="svc-body">
+          <div class="svc-inner">
+            <p class="svc-desc">We've helped clients of varying goals, budgets, and experience levels excel online. Once strategy is set, we build your campaigns across chosen platforms — tailored to your exact needs.</p>
+            <ul class="svc-bullets">
+              <li>Multi-platform deployment</li>
+              <li>Tailored to your goals and budget</li>
+              <li>Generally 2–5 days to build and test</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="svc-item anim d3" data-svc>
+        <div class="svc-hdr">
+          <div class="svc-title">Attribution &amp; Insights</div>
+          <div class="svc-tog">+</div>
+        </div>
+        <div class="svc-body">
+          <div class="svc-inner">
+            <p class="svc-desc">We don't set it and forget it. We continuously optimize and surface insights that get you the most for your ad spend — it's why 90%+ of our clients return for additional projects.</p>
+            <ul class="svc-bullets">
+              <li>Traffic sources, volume, and time on site</li>
+              <li>Conversions and completed goals</li>
+              <li>Demographics: location, age, gender, interests</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="svc-item anim" data-svc>
+        <div class="svc-hdr">
+          <div class="svc-title">Consultation &amp; Training</div>
+          <div class="svc-tog">+</div>
+        </div>
+        <div class="svc-body">
+          <div class="svc-inner">
+            <p class="svc-desc">Want a trusted expert on call? Or to bring everything fully in-house? We offer complete training in Google Analytics and all relevant ad platforms, so your team can own the work with confidence.</p>
+            <ul class="svc-bullets">
+              <li>Account-specific ongoing consultation</li>
+              <li>Complete in-house training programs</li>
+              <li>Google Analytics &amp; platform deep-dives</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:2.75rem;display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;" class="anim">
+      <a href="#contact" class="btn btn-primary">Get a Free Quote</a>
+      <span style="font-family:var(--font-serif);font-style:italic;font-size:0.9rem;color:var(--text-muted);">"If it's important to you, it's important to us."</span>
+    </div>
+  </div>
+</section>
+
+<!-- PLATFORMS -->
+<section id="platforms">
+  <div class="wrap">
+    <div class="label anim">Platforms</div>
+    <h2 class="anim d1" style="font-size:clamp(2.25rem,5vw,4rem);max-width:640px;">
+      Wherever your audience <em class="serif">lives online.</em>
+    </h2>
+    <p class="anim d2" style="margin-top:1.25rem;max-width:520px;font-size:0.875rem;">
+      We've managed millions in ad spend across platforms — from awareness campaigns for multinationals to analytics implementations for local businesses.
+    </p>
+
+    <div class="plat-filters anim" style="margin-top:2.5rem;">
+      <button class="flt on" data-f="all">All</button>
+      <button class="flt" data-f="social">Social</button>
+      <button class="flt" data-f="search">Search</button>
+      <button class="flt" data-f="ecom">eCommerce</button>
+      <button class="flt" data-f="organic">Organic</button>
+      <button class="flt" data-f="alt">Alternative</button>
+    </div>
+
+    <div class="plat-grid anim">
+      <div class="plat" data-c="search">Google Ads</div>
+      <div class="plat" data-c="social">Meta / Facebook</div>
+      <div class="plat" data-c="social">Instagram</div>
+      <div class="plat" data-c="social">TikTok</div>
+      <div class="plat" data-c="social">YouTube</div>
+      <div class="plat" data-c="social">LinkedIn</div>
+      <div class="plat" data-c="ecom">Amazon Ads</div>
+      <div class="plat" data-c="ecom">Shopify</div>
+      <div class="plat" data-c="social">Pinterest</div>
+      <div class="plat" data-c="social">Snapchat</div>
+      <div class="plat" data-c="search">Bing / Microsoft</div>
+      <div class="plat" data-c="organic">Google My Business</div>
+      <div class="plat" data-c="social">Twitter / X</div>
+      <div class="plat" data-c="organic">MailChimp</div>
+      <div class="plat" data-c="organic">Google Analytics</div>
+      <div class="plat" data-c="ecom">Squarespace</div>
+      <div class="plat" data-c="ecom">eBay</div>
+      <div class="plat" data-c="alt">DuckDuckGo</div>
+      <div class="plat" data-c="alt">Brave Ads</div>
+      <div class="plat" data-c="alt">WeChat</div>
+    </div>
+  </div>
+</section>
+
+<!-- STORY -->
+<section id="story" style="background:var(--bg-2);">
+  <div class="wrap">
+    <div class="story-wrap">
+      <div class="story-img-wrap anim">
+        <img
+          src="https://cdn.prod.website-files.com/5c8e94fa0fcf5afa84c683e4/6a2746ad3bbda73353679409_unnamed%20(1)-modified.png"
+          alt="Nate Baird, Founder of Mongo Digital"
+          class="story-img"
+          loading="lazy"
+        >
+        <div class="story-frame"></div>
+      </div>
+      <div>
+        <div class="label anim">Our Story</div>
+        <h2 class="story-h2 anim d1">Hi, I'm Nate.<br><em class="serif">Let's talk.</em></h2>
+        <p class="story-p anim d2">Mongo was founded in May of 2018 in Los Angeles, California. We exist to help businesses, both small and large, enhance their online presence.</p>
+        <p class="story-p anim d2">Using analytics, industry best practice, and thinking outside the box, we help clients stand out from the cookie-cutter campaigns flooding the web.</p>
+        <p class="story-p anim d2">I love helping businesses take control of their digital efforts and understand their data. Watching people get excited and experience those "aha" moments never gets old.</p>
+        <div class="story-sig anim d3">— Nate Baird, Founder</div>
+        <div class="story-btns anim d3">
+          <a href="tel:5187058581" class="btn btn-primary">Call Nate</a>
+          <a href="mailto:nateb@mongo.digital?subject=Working with Mongo" class="btn btn-ghost">Send an Email →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="wrap">
+    <div class="label anim">FAQ</div>
+    <h2 class="anim d1" style="font-size:clamp(2.25rem,5vw,4rem);max-width:560px;">
+      Frequently asked <em class="serif">questions.</em>
+    </h2>
+    <div class="faq-list">
+      <div class="faq-item anim" data-faq>
+        <button class="faq-q">How much does Mongo charge? <span class="faq-ico">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Mongo prices each project based on the details of the work required and offers fixed-price quotes — so what you see in your quote is exactly what you pay. No runaway budgets. We'll develop your Digital Road Map, which includes a full service breakdown, expected outcomes, and your project price.</div></div>
+      </div>
+      <div class="faq-item anim d1" data-faq>
+        <button class="faq-q">We're unhappy with our current agency — can you help us transition? <span class="faq-ico">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Yes, and we know how painful this can be. We've helped clients in similar situations transition while retaining all their digital properties and data. We ensure you always own your accounts so you're in the best position to make decisions going forward.</div></div>
+      </div>
+      <div class="faq-item anim d2" data-faq>
+        <button class="faq-q">Which digital platforms do you work with? <span class="faq-ico">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">We work with all major digital platforms — Google Ads, Meta, TikTok, YouTube, LinkedIn, Amazon, Shopify, Pinterest, Snapchat, Bing, and more. For a detailed breakdown, see the Platforms section above.</div></div>
+      </div>
+      <div class="faq-item anim d3" data-faq>
+        <button class="faq-q">Does Mongo work exclusively with paid platforms? <span class="faq-ico">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Not at all — we think organic platforms deserve far more attention. Instagram, Facebook, and Google My Business offer incredible opportunities to make an impression without ad spend. Once you've mastered those, we'll discuss whether paid advertising makes sense for your goals.</div></div>
+      </div>
+      <div class="faq-item anim" data-faq>
+        <button class="faq-q">How much should I spend on advertising? <span class="faq-ico">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">There's no universal answer. Mongo empowers you to answer the budget question yourself by providing detailed data about your digital properties. With real data in hand, you'll confidently determine spend based on ROI, conversions, and what resonates with your customers.</div></div>
+      </div>
+      <div class="faq-item anim d1" data-faq>
+        <button class="faq-q">Does Mongo have experience with Google Analytics? <span class="faq-ico">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Yes — proper Analytics setup is the foundation of any successful digital strategy. We'll determine your goals, implement robust tracking, and then coach you through reading your dashboard and making data-driven decisions across both paid and organic campaigns.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA / CONTACT -->
+<section id="contact">
+  <div class="wrap" style="position:relative;z-index:1;">
+    <div class="label anim" style="justify-content:center;">Let's Talk</div>
+    <h2 class="cta-h2 anim d1">
+      Enough about us.<br>
+      We'd love to hear<br>
+      <em class="serif">more about you.</em>
+    </h2>
+    <p class="cta-p anim d2">Schedule your no-cost consultation today. We'll walk through your goals and leave you with advice you can use immediately.</p>
+    <div class="anim d3">
+      <a href="https://mongo.digital/lets-talk" class="btn btn-primary" style="font-size:0.85rem;padding:1.125rem 2.5rem;">
+        Schedule Your Free Consultation
+      </a>
+    </div>
+    <div class="cta-meta anim d4">
+      <a href="tel:5187058581">(518) 705-8581</a>
+      <a href="mailto:hello@mongo.digital">hello@mongo.digital</a>
+      <a href="https://mongo.digital/resources">View Resources →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-top">
+    <div>
+      <a href="#top" class="logo" style="display:inline-block;margin-bottom:0.25rem;">MONGO<span>.</span></a>
+      <p class="foot-brand-desc">We exist to help businesses enhance their online presence using analytics, industry best practice, and outside-the-box thinking.</p>
+    </div>
+    <div>
+      <div class="foot-col-hd">Company</div>
+      <ul class="foot-links">
+        <li><a href="#story">Our Story</a></li>
+        <li><a href="#services">Services &amp; Pricing</a></li>
+        <li><a href="#platforms">Platforms</a></li>
+        <li><a href="https://mongo.digital/resources">Resources</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="foot-col-hd">Get Started</div>
+      <ul class="foot-links">
+        <li><a href="https://mongo.digital/lets-talk">Schedule Consultation</a></li>
+        <li><a href="https://cdn.prod.website-files.com/5c8e94fa0fcf5afa84c683e4/5e0fba60096ef41367916a04_Mongo%20Prep%20Pack.pdf">Download Prep Pack</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="foot-col-hd">Contact</div>
+      <ul class="foot-links">
+        <li><a href="tel:5187058581">(518) 705-8581</a></li>
+        <li><a href="mailto:nateb@mongo.digital">nateb@mongo.digital</a></li>
+        <li><a href="mailto:hello@mongo.digital">hello@mongo.digital</a></li>
+        <li><a href="https://maps.google.com/?q=2684+Lacy+St+Suite+214+Los+Angeles+CA+90031">Los Angeles, CA</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <div class="foot-copy">© 2024 Mongo Digital, LLC · Los Angeles, CA</div>
+    <div class="foot-made">Made with care in California</div>
+  </div>
+</footer>
+
+<script>
+  // ── Nav scroll ──────────────────────────────────────
+  const nav = document.getElementById('nav');
+  const onScroll = () => nav.classList.toggle('stuck', window.scrollY > 40);
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  // ── Hamburger / mobile nav ───────────────────────────
+  const ham = document.getElementById('ham');
+  const mob = document.getElementById('mob');
+  ham.addEventListener('click', () => {
+    const open = mob.classList.toggle('open');
+    ham.classList.toggle('open', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+  document.querySelectorAll('.m-lnk').forEach(a => {
+    a.addEventListener('click', () => {
+      mob.classList.remove('open');
+      ham.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+
+  // ── Scroll animations ────────────────────────────────
+  const animObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); animObs.unobserve(e.target); }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -32px 0px' });
+  document.querySelectorAll('.anim').forEach(el => animObs.observe(el));
+
+  // ── Counter ──────────────────────────────────────────
+  function runCounter(el, to, ms = 1800) {
+    const start = performance.now();
+    const tick = now => {
+      const p = Math.min((now - start) / ms, 1);
+      const ease = 1 - Math.pow(1 - p, 4);
+      el.textContent = Math.round(ease * to);
+      if (p < 1) requestAnimationFrame(tick);
+      else el.textContent = to;
+    };
+    requestAnimationFrame(tick);
+  }
+  const ctrObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        runCounter(e.target, +e.target.dataset.to);
+        ctrObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.8 });
+  document.querySelectorAll('.ctr').forEach(el => ctrObs.observe(el));
+
+  // ── Process steps ─────────────────────────────────────
+  document.querySelectorAll('[data-step]').forEach(el => {
+    el.addEventListener('click', () => {
+      const was = el.classList.contains('open');
+      document.querySelectorAll('[data-step]').forEach(s => s.classList.remove('open'));
+      if (!was) el.classList.add('open');
+    });
+  });
+
+  // ── Services accordion ────────────────────────────────
+  document.querySelectorAll('[data-svc]').forEach(el => {
+    el.querySelector('.svc-hdr').addEventListener('click', () => {
+      const was = el.classList.contains('open');
+      document.querySelectorAll('[data-svc]').forEach(s => s.classList.remove('open'));
+      if (!was) el.classList.add('open');
+    });
+  });
+
+  // ── FAQ accordion ─────────────────────────────────────
+  document.querySelectorAll('[data-faq]').forEach(el => {
+    el.querySelector('.faq-q').addEventListener('click', () => {
+      const was = el.classList.contains('open');
+      document.querySelectorAll('[data-faq]').forEach(f => f.classList.remove('open'));
+      if (!was) el.classList.add('open');
+    });
+  });
+
+  // ── Platform filter ───────────────────────────────────
+  document.querySelectorAll('.flt').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const f = btn.dataset.f;
+      document.querySelectorAll('.flt').forEach(b => b.classList.remove('on'));
+      btn.classList.add('on');
+      document.querySelectorAll('.plat').forEach(p => {
+        p.classList.toggle('hide', f !== 'all' && p.dataset.c !== f);
+      });
+    });
+  });
+</script>
+</body>
+</html>
